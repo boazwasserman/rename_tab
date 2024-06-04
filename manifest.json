@@ -1,0 +1,41 @@
+{
+    "manifest_version": 3,
+    "name": "Persistent Tab Renamer",
+    "version": "1.0",
+    "permissions": [
+      "tabs",
+      "activeTab",
+      "storage",
+      "scripting"
+    ],
+    "background": {
+      "service_worker": "src/background.js"
+    },
+    "action": {
+      "default_popup": "src/rename-tab.html"
+    },
+    "icons": {
+        "16": "src/icons/icon_16.png",
+        "32": "src/icons/icon_32.png",
+        "48": "src/icons/icon_48.png",
+        "128": "src/icons/icon_128.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["src/rename-tab.js"]
+      }
+    ],
+    "commands": {
+        "rename_tab": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+1",
+            "windows": "Ctrl+Shift+1",
+            "mac": "Command+Shift+1",
+            "chromeos": "Ctrl+Shift+1",
+            "linux": "Ctrl+Shift+1"
+          },
+          "description": "Rename the current tab"
+        }
+      }
+  }
